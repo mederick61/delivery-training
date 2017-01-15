@@ -105,6 +105,7 @@ What you must know about it :
 * `import X from 'x';` is the way to import content of a module in ES6. A module could be a variable, a function or a class. In this exemple we only use third party module, you will find it in "node_modules" directory.
 * In ES6, a variable is no more declare with `var`. You now have 2 kind of variables :
   * `let` for loop variables
+
 ``` js
   let i = 0;
   while (i<100){
@@ -112,7 +113,9 @@ What you must know about it :
   }
   i = 'hello'; //will also be OK
 ```
+
   * `const` for variable instanciate only once. Be carefull, `const` is a pointer constant, not a constant variable.
+
 ``` js
    const toto = 42;
    toto = 50; // will throw an Error
@@ -122,6 +125,7 @@ What you must know about it :
    titi.name = 'john' ; // will also be OK
    titi = {id : 50, name: 'john'}; // will throw an Error cause it instanciate a new object
 ```
+
   Always use `const` by default to limit inconsistency
 * `(params) => {...}` is the way to declare an anonymous function in ES6. To declare named function you must use ` function maFunction(params) { ... } `
 * express routes are evaluated from the top to the bottom
@@ -130,11 +134,12 @@ What you must know about it :
 OK we write some code in ES6 but node.js doesn't implement all the specification. For exemple, `import` is not yet supported.
 We'll use [babel](https://babeljs.io/) to polyfill ES6.
 
-  ``` sh
-    npm i babel-cli babel-core babel-preset-latest --save
-  ```
+``` sh
+  npm i babel-cli babel-core babel-preset-latest --save
+```
 
 Then edit "package.json"
+
 ``` json
 ...
 "scripts": {
@@ -142,19 +147,24 @@ Then edit "package.json"
 },
 ...
 ```
+
 Congratulation, you can start your server for the first time
+
 ``` sh
     npm start
 ```
+
 Take a look at logs in your console : remember node.js is asynchronous.
 
 Test it
+
 ``` sh
     curl http://localhost:5000/
     curl http://localhost:5000/shouldReturn404
 ```
 
 Time to commit and push
+
 ``` sh
     git add .
     git commit -m ':tada: my first node API'
@@ -165,10 +175,13 @@ Time to commit and push
 * Goto your [Heroku Dashboard](https://dashboard.heroku.com/apps)
 * Clic on "new" > "create an app"
 * Add a new git remote
+
 ``` sh
     git add remote heroku https://git.heroku.com/my-app-name-1234.git
 ```
+
 * Heroku will detect that our app run with node.js but we will tell it the engine to use in package.json
+
 ``` json
     ...
     "scripts": {
@@ -180,14 +193,19 @@ Time to commit and push
     },
     ...
 ```
+
 * Deploy your first heroku app
+
 ``` sh
     git push heroku master
 ```
+
 * Test it
+
 ``` sh
     curl http://my-app-name-1234.herokuapp.com/
 ```
+
 Notice that you don't explicit port. Heroku set an environment variable each time it start and map it on  port 80 through his reverse proxy. We retreived it in our code with `process.env.PORT`
 
 ## Gitlab-CI
@@ -227,6 +245,7 @@ Now you have all you need to use Gitlab, Gitlab-ci & Heroku for your project.
 
 We used babel-node which transpil code on runtime. It's not a good practice for production.
 First create a new file ".babelrc" which conatains babel target env.
+
 ``` json
     {
       "presets": [
@@ -239,6 +258,7 @@ First create a new file ".babelrc" which conatains babel target env.
 ```
 
 Then define 3 new scripts in package.json :
+
 ``` json
     ...
     "scripts": {
@@ -249,12 +269,14 @@ Then define 3 new scripts in package.json :
     },
     ...
 ```
+
 * `npm run dev` start our app with babel-node
 * `npm run build` build our app in build directory
 * `npm start` start our builded application
 * postinstall will run after each npm install. It's use to launch a build after each Heroku deployment.
 
 We just have to exclude build from our repository & commit :
+
 ``` sh
     echo "build" >> .gitignore
     git add .
