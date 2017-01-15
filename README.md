@@ -105,6 +105,7 @@ What you must know about it :
 * `import X from 'x';` is the way to import content of a module in ES6. A module could be a variable, a function or a class. In this exemple we only use third party module, you will find it in "node_modules" directory.
 * In ES6, a variable is no more declare with `var`. You now have 2 kind of variables :
   * `let` for loop variables
+  * `const` for variable instanciate only once. Be carefull, `const` is a pointer constant, not a constant variable.
 
 ``` js
   let i = 0;
@@ -112,11 +113,7 @@ What you must know about it :
     i++; //will be OK
   }
   i = 'hello'; //will also be OK
-```
 
-  * `const` for variable instanciate only once. Be carefull, `const` is a pointer constant, not a constant variable.
-
-``` js
    const toto = 42;
    toto = 50; // will throw an Error
    toto = 'hello'; // will throw an Error
