@@ -105,23 +105,23 @@ What you must know about it :
 * `import X from 'x';` is the way to import content of a module in ES6. A module could be a variable, a function or a class. In this exemple we only use third party module, you will find it in "node_modules" directory.
 * In ES6, a variable is no more declare with `var`. You now have 2 kind of variables :
   * `let` for loop variables
-  ``` js
-    let i = 0;
-    while (i<100){
-      i++; //will be OK
-    }
-    i = 'hello'; //will also be OK
-  ```
+``` js
+  let i = 0;
+  while (i<100){
+    i++; //will be OK
+  }
+  i = 'hello'; //will also be OK
+```
   * `const` for variable instanciate only once. Be carefull, `const` is a pointer constant, not a constant variable.
-  ``` js
-     const toto = 42;
-     toto = 50; // will throw an Error
-     toto = 'hello'; // will throw an Error
-     const titi = {id : 42}; //create an Object with an id property
-     titi.id = 50 ; // wil be OK
-     titi.name = 'john' ; // will also be OK
-     titi = {id : 50, name: 'john'}; // will throw an Error cause it instanciate a new object
-  ```
+``` js
+   const toto = 42;
+   toto = 50; // will throw an Error
+   toto = 'hello'; // will throw an Error
+   const titi = {id : 42}; //create an Object with an id property
+   titi.id = 50 ; // wil be OK
+   titi.name = 'john' ; // will also be OK
+   titi = {id : 50, name: 'john'}; // will throw an Error cause it instanciate a new object
+```
   Always use `const` by default to limit inconsistency
 * `(params) => {...}` is the way to declare an anonymous function in ES6. To declare named function you must use ` function maFunction(params) { ... } `
 * express routes are evaluated from the top to the bottom
