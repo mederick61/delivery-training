@@ -1,0 +1,17 @@
+{
+  "name": "jumel",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "babel-node ./src --trace-sync-io --presets latest"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-core": "^6.21.0",
+    "babel-preset-latest": "^6.16.0",
+    "express": "^4.14.0"
+  }
+}
